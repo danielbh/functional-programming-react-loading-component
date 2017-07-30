@@ -1,8 +1,10 @@
 import React from 'react';
-import PanelLoading from './loading'
-import './index.css';
 
-function compose(loadingHandler) {
+/**
+ * @param loadingHandler a React component that represents loading state
+ * @returns {Function} A React component that has receives fetched data as props
+ */
+export default function compose(loadingHandler) {
   return function (Component) {
     class Container extends React.Component {
 
@@ -25,14 +27,6 @@ function compose(loadingHandler) {
         );
       }
     }
-    return Container
+    return Container;
   }
 }
-
-const Panel = (props) => (
-  <div className="panel">
-    {props.data}
-  </div>
-);
-
-export default compose(PanelLoading)(Panel);
